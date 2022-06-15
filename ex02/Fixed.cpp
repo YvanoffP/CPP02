@@ -50,15 +50,15 @@ bool Fixed::operator<(const Fixed &rhs) const {
 }
 
 bool Fixed::operator>=(const Fixed &rhs) const {
-	return this->getRawBits() >= rhs.getRawBits();
+	return (this->fixedPointValue >= rhs.getRawBits());
 }
 
 bool Fixed::operator<=(const Fixed &rhs) const {
-	return this->getRawBits() <= rhs.getRawBits();;
+	return this->fixedPointValue <= rhs.getRawBits();;
 }
 
 bool Fixed::operator==(const Fixed &rhs) const {
-	return this->getRawBits() == rhs.getRawBits();;
+	return this->fixedPointValue == rhs.getRawBits();;
 }
 
 bool Fixed::operator!=(const Fixed &rhs) const {
@@ -85,12 +85,23 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
 
 Fixed Fixed::operator++(int) {
 	Fixed fixed(*this);
-	++fixedPointValue;
+    this->operator++();
 	return fixed;
 }
 
 Fixed &Fixed::operator++() {
 	this->fixedPointValue++;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed fixed(*this);
+    this->operator--();
+	return fixed;
+}
+
+Fixed &Fixed::operator--() {
+	this->fixedPointValue--;
 	return *this;
 }
 

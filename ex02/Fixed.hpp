@@ -52,6 +52,10 @@ public:
 
 	Fixed &operator++();
 
+	Fixed operator--(int);
+
+	Fixed &operator--();
+
 	static Fixed &min(Fixed &fixed1, Fixed &fixed2);
 
 	static const Fixed &min(Fixed const &fixed1, Fixed const &fixed2);
